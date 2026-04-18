@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amundson Plumbing | Plano, TX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,* ::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1A3E6F;
+      --navy-dark: #102848;
+      --orange: #F5821F;
+      --orange-dark: #d96d0f;
+      --white:  #FFFFFF;
+      --light:  #F4F7FB;
+      --gray:   #6B7280;
+      --text:   #1F2937;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Open Sans', sans-serif; color: var(--text); background: var(--white); }
+
+    /* ── TOP BAR ─────────────────────────────────── */
+    .top-bar {
+      background: var(--navy-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 8px 20px;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+    }
+    .top-bar a { color: var(--orange); text-decoration: none; font-weight: 700; }
+
+    /* ── NAVBAR ──────────────────────────────────── */
+    nav {
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .logo-text { color: var(--white); font-family: 'Montserrat', sans-serif; }
+    .logo-text span { display: block; }
+    .logo-text .brand { font-size: 20px; font-weight: 800; line-height: 1.1; }
+    .logo-text .sub   { font-size: 12px; font-weight: 500; opacity: 0.75; letter-spacing: 1px; text-transform: uppercase; }
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white);
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--orange-dark); }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://storage.googleapis.com/crm-conversations-ai-production/ask-ai-images/1776451275595/abda4944-ab4d-42ee-a975-6d0b2f2d415b.png');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.4);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      padding: 60px 5%;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 em { color: var(--orange); font-style: normal; }
+    .hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      text-decoration: none;
+      padding: 16px 34px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      text-decoration: none;
+      padding: 16px 34px;
+      border-radius: 50px;
+      border: 2px solid rgba(255,255,255,0.6);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+    /* ── TRUST BAR ───────────────────────────────── */
+    .trust-bar {
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      padding: 28px 5%;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 15px; font-weight: 600;
+    }
+    .trust-item span.icon { font-size: 22px; }
+
+    /* ── SECTION SHARED ──────────────────────────── */
+    section { padding: 80px 5%; }
+    .section-label {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--gray);
+      font-size: 17px;
+      max-width: 580px;
+      margin: 0 auto 56px;
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ────────────────────────────────── */
+    .services { background: var(--light); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 36px 28px;
+      box-shadow: 0 4px 20px rgba(26,62,111,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-top: 4px solid var(--orange);
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(26,62,111,0.15); }
+    .service-card .icon { font-size: 40px; margin-bottom: 18px; }
+    .service-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .service-card p { color: var(--gray); line-height: 1.65; font-size: 15px; }
+
+    /* ── WHY US ──────────────────────────────────── */
+    .why-us-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .why-us-inner { grid-template-columns: 1fr; } }
+    .why-image-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(26,62,111,0.2);
+    }
+    .why-image-wrap img { width: 100%; display: block; }
+    .why-list { display: flex; flex-direction: column; gap: 24px; }
+    .why-item {
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .why-check {
+      width: 44px; height: 44px; min-width: 44px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 20px;
+      font-weight: 700;
+    }
+    .why-item h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px; font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .why-item p { color: var(--gray); font-size: 14px; line-height: 1.6; }
+
+    /* ── TESTIMONIALS ────────────────────────────── */
+    .testimonials { background: var(--navy); }
+    .testimonials .section-title { color: var(--white); }
+    .testimonials .section-sub  { color: rgba(255,255,255,0.65); }
+    .testimonials .section-label { color: var(--orange); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 30px 26px;
+      color: var(--white);
+    }
+    .stars { color: var(--orange); font-size: 18px; margin-bottom: 14px; letter-spacing: 2px; }
+    .review-card p { font-size: 15px; line-height: 1.7; opacity: 0.9; margin-bottom: 18px; }
+    .reviewer { font-weight: 700; font-size: 14px; color: var(--orange); }
+
+    /* ── CTA BAND ────────────────────────────────── */
+    .cta-band {
+      background: var(--orange);
+      text-align: center;
+      padding: 60px 5%;
+    }
+    .cta-band h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .cta-band p { color: rgba(255,255,255,0.85); font-size: 17px; margin-bottom: 30px; }
+    .btn-white {
+      background: var(--white);
+      color: var(--orange);
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      transition: transform 0.15s;
+      display: inline-block;
+    }
+    .btn-white:hover { transform: scale(1.04); }
+
+    /* ── CONTACT FORM ────────────────────────────── */
+    .contact-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 48px 40px;
+      box-shadow: 0 8px 40px rgba(26,62,111,0.12);
+    }
+    .contact-wrap h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .contact-wrap .sub {
+      text-align: center; color: var(--gray); font-size: 15px; margin-bottom: 32px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; margin-bottom: 18px; }
+    .form-group label {
+      font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px 16px;
+      border: 2px solid #E5EAF0;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--orange);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 16px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--orange); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 36px 5%;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    footer strong { color: var(--white); }
+    footer a { color: var(--orange); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    📞 Available 24/7 for Emergencies  |  Call Now: <a href="tel:4699696436">469-969-6436</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">🔧</div>
+      <div class="logo-text">
+        <span class="brand">Amundson Plumbing</span>
+        <span class="sub">Plano, Texas</span>
+      </div>
+    </div>
+    <a class="nav-cta" href="tel:4699696436">📞 Call 469-969-6436</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="badge">⭐ Trusted Plumbing Experts in Plano, TX</div>
+      <h1>Fast, Reliable <em>Plumbing</em> You Can Trust</h1>
+      <p>From leaky faucets to full pipe replacements — Amundson Plumbing delivers professional service, honest pricing, and guaranteed workmanship right here in Plano, Texas.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="tel:4699696436">📞 Call Now — Free Estimate</a>
+        <a class="btn-outline" href="#contact">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="icon">🏅</span> Licensed &amp; Insured</div>
+    <div class="trust-item"><span class="icon">⚡</span> Same-Day Service</div>
+    <div class="trust-item"><span class="icon">💲</span> Upfront Flat-Rate Pricing</div>
+    <div class="trust-item"><span class="icon">🔒</span> Satisfaction Guaranteed</div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Complete Plumbing Services</h2>
+    <p class="section-sub">From routine maintenance to emergency repairs, we handle every plumbing need for homeowners and businesses in the Plano area.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon">🚰</div>
+        <h3>Leak Detection &amp; Repair</h3>
+        <p>We use advanced technology to locate hidden leaks fast and fix them right the first time — protecting your property from water damage.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🚿</div>
+        <h3>Drain Cleaning</h3>
+        <p>Slow or clogged drains? Our professional hydro-jetting and snaking services clear blockages quickly and prevent future buildup.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🌡️</div>
+        <h3>Water Heater Services</h3>
+        <p>Installation, repair, and replacement of traditional and tankless water heaters. We'll keep the hot water flowing in your home.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🏠</div>
+        <h3>Pipe Repair &amp; Repiping</h3>
+        <p>Burst pipes, corroded lines, or aging plumbing? We offer full repiping solutions and expert pipe repairs to restore your system.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🚽</div>
+        <h3>Fixture Installation</h3>
+        <p>Upgrade your bathroom or kitchen with new faucets, toilets, sinks, and more — professionally installed with zero hassle.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🆘</div>
+        <h3>Emergency Plumbing</h3>
+        <p>Plumbing emergencies don't wait. We're available 24/7 to respond quickly and minimize damage when it matters most.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="about">
+    <div class="why-us-inner">
+      <div class="why-image-wrap">
+        <img src="https://storage.googleapis.com/crm-conversations-ai-production/ask-ai-images/1776451275595/abda4944-ab4d-42ee-a975-6d0b2f2d415b.png" alt="Amundson Plumbing professional at work" />
+      </div>
+      <div>
+        <p class="section-label" style="text-align:left">Why Choose Us</p>
+        <h2 class="section-title" style="text-align:left">Plano's Most Trusted Plumbing Team</h2>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h4>Locally Owned &amp; Operated</h4>
+              <p>We're your neighbors in Plano. We take pride in serving our community with honesty and respect.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h4>Transparent, Flat-Rate Pricing</h4>
+              <p>No surprise bills. You'll know the full cost before we start any work — guaranteed.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h4>Experienced &amp; Certified Plumbers</h4>
+              <p>Our team is fully licensed, insured, and trained to handle any plumbing challenge safely and efficiently.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h4>100% Satisfaction Guarantee</h4>
+              <p>We're not done until you're completely happy. Every job is backed by our quality workmanship guarantee.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="reviews">
+    <p class="section-label">Customer Reviews</p>
+    <h2 class="section-title">What Plano Homeowners Are Saying</h2>
+    <p class="section-sub">Hundreds of happy customers across Plano and surrounding areas trust Amundson Plumbing for all their plumbing needs.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Amundson Plumbing showed up within the hour for our burst pipe. They fixed it quickly and the price was very fair. Highly recommend!"</p>
+        <div class="reviewer">— Sarah M., Plano TX</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Professional, clean, and honest. They diagnosed a leak three other plumbers missed. Won't use anyone else going forward."</p>
+        <div class="reviewer">— James R., Plano TX</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"They replaced our old water heater same day. Explained all options, no pressure. The install was perfect. Incredible service!"</p>
+        <div class="reviewer">— Linda K., Plano TX</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2>Plumbing Problem? We're Ready to Help — Right Now.</h2>
+    <p>Call us any time for a free estimate. Same-day appointments available in Plano and surrounding areas.</p>
+    <a class="btn-white" href="tel:4699696436">📞 469-969-6436</a>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <section id="contact" style="background: var(--light);">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Request a Free Quote</h2>
+    <p class="section-sub">Fill out the form and we'll get back to you within 30 minutes during business hours.</p>
+    <div class="contact-wrap">
+      <h3>Schedule Your Service</h3>
+      <p class="sub">Or call us directly at <a href="tel:4699696436" style="color:var(--orange); font-weight:700;">469-969-6436</a></p>
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="(469) 000-0000" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@email.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Leak Detection &amp; Repair</option>
+            <option>Drain Cleaning</option>
+            <option>Water Heater Service</option>
+            <option>Pipe Repair / Repiping</option>
+            <option>Fixture Installation</option>
+            <option>Emergency Plumbing</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Describe the Issue</label>
+          <textarea placeholder="Tell us what's going on and we'll be in touch shortly..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">🔧 Send My Request — It's Free!</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>Amundson Plumbing</strong><br />
+    Serving Plano, TX &amp; Surrounding Areas<br />
+    📞 <a href="tel:4699696436">469-969-6436</a>  |  Licensed &amp; Insured<br /><br />
+    <small>© 2026 Amundson Plumbing. All Rights Reserved.</small>
+  </footer>
+
+</body>
+</html>
